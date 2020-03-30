@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "watch": "webpack --watch",
+    "watch": "webpack --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "@types/chrome": "0.0.75",
@@ -22,8 +24,11 @@
     "style-loader": "^0.23.1",
     "ts-loader": "^5.3.1",
     "typescript": "^3.1.6",
+    "web-ext": "^4.1.0",
+    "webextension-polyfill-ts": "^0.14.0",
     "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "grommet": "^2.11.3",

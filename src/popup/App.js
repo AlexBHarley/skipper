@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
 import { Box, Grommet, Text, Anchor } from "grommet";
+import { browser } from "webextension-polyfill-ts";
+
 import "./App.css";
 
 import { SKIP_COMMAND } from "../constants";
@@ -9,15 +10,14 @@ export default function() {
   const [command, setCommand] = useState(null);
 
   // popup was opened
-  window.onload = function() {
-    chrome.commands.getAll(commands => {
-      const skipCommand = commands.find(cmd => cmd.name === SKIP_COMMAND);
-      setCommand(skipCommand.shortcut);
-    });
+  window.onload = async function() {
+    const commands = await browser.commands.getAll();
+    const skipCommand = commands.find(cmd => cmd.name === SKIP_COMMAND);
+    setCommand(skipCommand.shortcut);
   };
 
   const onForumNameClick = e => {
-    chrome.tabs.create({ url: "https://news.ycombinator.com" });
+    browser.tabs.create({ url: "https://news.ycombinator.com" });
   };
 
   return (

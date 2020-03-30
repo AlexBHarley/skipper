@@ -1,9 +1,6 @@
 const path = require("path");
 
 module.exports = {
-  mode: "development",
-  devtool: "inline-source-map",
-
   entry: {
     content: "./src/content.js",
     background: "./src/background.js",

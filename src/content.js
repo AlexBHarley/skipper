@@ -1,3 +1,4 @@
+import { browser } from "webextension-polyfill-ts";
 import { SKIP_COMMAND } from "./constants";
 
 // https://stackoverflow.com/questions/123999/how-can-i-tell-if-a-dom-element-is-visible-in-the-current-viewport
@@ -36,8 +37,8 @@ function getNextTopLevelRowIndex(rows, currentIndex) {
   }
 }
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-  if (request == SKIP_COMMAND) {
+browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request === SKIP_COMMAND) {
     const commentTree = document.getElementsByClassName("comment-tree");
 
     const [{ rows }] = commentTree;
